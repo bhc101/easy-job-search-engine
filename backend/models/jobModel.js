@@ -1,6 +1,11 @@
-exports.getJobs = (req, res) => {
-    res.json([
-        { id: 1, title: 'Oracle Integration Cloud Developer', location: 'Remote' },
-        { id: 2, title: 'Full Stack Developer', location: 'New York' }
-    ]);
-};
+const mongoose = require('mongoose');
+
+const jobSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    location: String,
+    postedBy: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Job', jobSchema);
